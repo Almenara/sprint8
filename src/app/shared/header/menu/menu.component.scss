@@ -1,0 +1,90 @@
+@import "../../../../vars.scss";
+#menu{    
+    border-right: 1px solid $gray;
+    background-color: $black;
+    width: 100%;
+    padding: 30px 32px 32px;
+    ul#options{
+        margin: 0;
+        padding: 6px 0 0;
+        list-style: none;
+        overflow: hidden;
+        @media (min-width: 768px) {
+            padding: 0;
+
+        }
+        li.option{
+            position: relative;
+            margin: 0 0 20px 0;
+            padding: 0 0 0 20px;
+            width: 100%;
+            list-style: none;
+            letter-spacing: 1px;
+            line-height: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: $white;
+            @media (min-width: 768px) {
+                width: auto;
+                margin: 0;
+                padding: 15px 24px 9px 25px;
+                border-left: 1px solid $gray;
+                font-size: 0.875rem;
+                &:last-child{
+                    padding: 15px 25px 9px 25px;
+                    border-right: 1px solid $gray;
+                }
+            }
+            a{
+                text-decoration: none;
+                span{
+                    position: absolute;
+                    display: flex;
+                    height: 20px;
+                    width: 0;
+                    top:-2px;
+                    left: -1px;
+                    box-shadow: 0 0 0 0 rgb( 0 0 0 / 80%);
+                    pointer-events: none;
+                    &:hover{
+                        pointer-events: none;
+                    }
+                    @media (min-width: 768px) {
+                        position: relative;
+                        height: 1px;
+                        background-color: $white;
+                        margin-top: 5px;
+                        width: 0;
+
+                    }
+                }
+                &:hover{
+                    span{
+                        box-shadow: 0 0 8px 3px rgb( 0 255 0 / 80%)!important;
+                        @media (min-width: 768px) {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            &.active{
+                a{
+                    span{
+                        box-shadow: 0 0 8px 3px rgb( 80 80 255 / 90%);
+                        @media (min-width: 768px) {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @media (min-width: 768px) {
+        border-top: 1px solid $gray;
+        border-bottom: 1px solid $gray;
+        border-right: none;
+        padding: 0;
+        margin: 0;
+    }
+}

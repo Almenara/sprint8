@@ -1,0 +1,20 @@
+<header [ngClass]="menuIsOpen? 'menu-opened' : ''" class="d-flex flex-column">
+    <div id="main-nav" class="d-flex header justify-content-between justify-content-md-center">
+        <div id="burger" (click)="toggleMenu()" [ngClass]="menuIsOpen? 'menu-opened':''" class="d-flex flex-column justify-content-between d-md-none">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div id="logo" class="d-flex align-items-center">
+            <a href="/" class="logo d-flex d-md-none align-items-center">
+                <img id="logo-sx" alt="Star Wars" src="../../../assets/img/sw_logo_horiz.png">
+            </a>
+            <a href="/" class="logo d-none d-md-flex align-items-center" alt="Star Wars">
+                <img id="logo-md" alt="Star Wars" src="../../../assets/img/sw_logo_stacked.png">
+            </a>
+        </div>
+        <div id="search" class="d-md-none">buscar</div>
+    </div>
+    <app-menu [ngClass]="menuIsOpen? 'menu-opened' : ''"></app-menu>
+    <div (click)="toggleMenu()" id="hiddeContent" class="no-animated"></div>
+</header>
