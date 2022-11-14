@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  
-  public menuIsOpen:boolean = false;
+  get menuIsOpen(){
+    return this.openMenuService.menuIsOpen;
+  }
   
   constructor(private openMenuService: OpenMenuService) { 
     
@@ -18,7 +19,10 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu(){
-    this.menuIsOpen =this.openMenuService.toggleMenu()
+    this.openMenuService.toggleMenu()
   }
 
+  closeMenu(){
+    this.openMenuService.closeMenu()
+  }
 }

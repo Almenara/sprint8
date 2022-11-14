@@ -5,7 +5,8 @@ import { HeaderModule } from './header/header.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     HeaderModule,
     CommonModule

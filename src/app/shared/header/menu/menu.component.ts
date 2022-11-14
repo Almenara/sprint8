@@ -1,3 +1,4 @@
+import { OpenMenuService } from './../../open-menu.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private openMenuService: OpenMenuService) { }
 
   ngOnInit(): void {
+  }
+
+  closeMenu(){
+    this.openMenuService.closeMenu()
   }
 
 }

@@ -2,7 +2,14 @@ app-header{
     position: fixed;
     width: 100%;
 }
-app-content{
+.container{
     display: flex;
     flex: 1;
+    margin-top: 120px;
+    margin-bottom: 80px;
+    
+    @media (min-width: 768px) {
+        margin-top: 240px;
+        margin-bottom: 80px;
+    }
 }

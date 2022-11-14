@@ -1,29 +1,52 @@
+import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Starship, StarshipList } from './starship/starship-list.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StarWarsAPIService{
 
-  public starshipList: any[] = [];
+  public URLService: string = `https://swapi.py4e.com/api`;
+  public resource: string = `starships`;
 
-  constructor(private http: HttpClient) {
+  public starshipList!: StarshipList;
+  public starshipDetail!: Starship;
+
+  
+
+  constructor(private http: HttpClient, private route: Router) {
     this.getStarshipList()
   }
 
-  getStarshipList(page:number = 1):any{
-    this.http.get(`https://swapi.py4e.com/api/starships/?page=${page}`)
-      .subscribe((resp: any) => {
-        this.starshipList = resp.results;
-        console.log(this.starshipList)
+  getStarshipListByPage(page:number):any{
+    this.http.get<StarshipList>(`${this.URLService}/${this.resource}/?page=${page}`)
+      .subscribe(resp => {
+        //return (resp.results)
+        this.starshipList.next = resp.next;
+        this.starshipList.previous = resp.previous;
+        this.starshipList.results = this.starshipList.results.concat(resp.results);
       })
   }
-  getStarship(id:number = 1){
-    this.http.get(`https://swapi.py4e.com/api/starships/${id}`)
-      .subscribe((resp:any) => {
-        console.log(resp.results);        
+  getStarshipList():any{
+    this.http.get<StarshipList>(`${this.URLService}/${this.resource}/?page=1`)
+      .subscribe(resp => {
+        this.starshipList = resp;
       })
   }
+  handleError(error:Error) {
+    console.log(error)
+  }
+  async getStarship(id: number) {
+    await firstValueFrom(this.http.get<Starship>(`${this.URLService}/${this.resource}/${id}`))
+    .then( starship => this.starshipDetail = starship )
+    .catch( (error:any) => { if (error.status != 200 ) this.route.navigateByUrl('/404') })
+    
+    console.log(this.starshipDetail)
+    return this.starshipDetail;
+  }
+  
 
 }
