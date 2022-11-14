@@ -1,0 +1,142 @@
+@import "../../../vars.scss";
+header{
+    position: sticky;
+    background-color: $black;
+    #main-nav{            
+        z-index: 100;
+        #burger{
+            position: relative;
+            padding:20px 15px;
+            cursor: pointer;
+            span{
+                display: flex;
+                position: relative;
+                justify-content: space-between;
+                width: 100%;
+                height: 2px;
+                background-color: $black;
+                border-right: 20px solid $lightGray;
+                border-left: 4px solid $lightGray;
+                border-radius: 2px;
+                box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+                z-index: 1;
+                &:nth-child(2){
+                    border-left: 20px solid $lightGray;
+                    border-right: 4px solid $lightGray;
+                    z-index: 0;
+                }
+            }
+            &:hover{
+                span{
+                    border-color: $white;
+                    box-shadow: -8px 0 6px 2px rgb(0 255 0 / 70%);
+                }
+                span:last-child{
+                    border-color:$white;
+                    box-shadow: 8px 0 6px 2px rgb(0 0 255 / 70%);
+                }
+                span:first-child{
+                    border-color: $white;
+                    box-shadow: 8px 0 6px 2px rgb(255 0 0 / 70%);
+                }
+            }
+            &.menu-opened{
+                span{
+                    width: 110%;
+                    box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+                    border: 0px solid $black;
+                }
+                span:first-child{
+                    top: 9px;
+                    transform: rotate(45deg);
+                    border-left: 23px solid $white;
+                    border-right: 4px solid $white;
+                    box-shadow: -8px 0 6px 2px rgb(255 0 0 / 70%);
+                }
+                span:last-child{
+                    top: -9px;
+                    transform: rotate(-45deg);
+                    border-right: 23px solid $white;
+                    border-left: 4px solid $white;
+                    box-shadow: 8px 0 6px 2px rgb(0 0 255 / 70%);
+                }
+            }
+        }
+        gap: 10px;
+        min-height: 60px;
+        padding: 0;
+        & > div{
+            min-width: 61px;
+        }
+        div:first-child {
+            border-right: 1px solid $gray;
+        }
+        div:last-child {
+            border-left: 1px solid $gray;
+        }
+        .logo{
+            height: 100%;
+            img{
+                max-height: 100%;
+            }
+        }
+        #logo-sx{
+            max-height: 20px;
+            width: auto;
+        }
+        #logo-md{
+            max-height: 88px;
+            width: auto;
+        }
+        @media (min-width: 768px) {
+            min-height: 134px;
+            padding: 20px 0;
+            background-image: url('../../../assets/img/header-md-bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+    app-menu{
+        position: absolute;
+        display: flex;
+        width: 260px;
+        min-height: max-content;
+        height: 100vh;
+        top: 0;
+        left: -260px;
+        z-index: 200;
+        @media (min-width: 768px) {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: auto;
+            left: auto!important;
+            top: auto;
+        }
+    }
+    
+    #hiddeContent{
+        opacity: 0;
+        top: 0;
+        left: 0;
+        position: absolute;
+        height: 0;
+        width: 0;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        z-index:10;
+    }
+    &.menu-opened{
+        #hiddeContent{
+            height: 100vh;
+            width: 100%;
+            opacity: 1;
+            
+            @media (min-width: 768px) {
+                height: 0;
+                width: 0;
+                opacity: 0;
+            }
+        }
+    }
+}
