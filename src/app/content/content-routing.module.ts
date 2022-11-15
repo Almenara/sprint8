@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { StarshipListComponent } from './starship/list/starship-list.component';
 import { StarshipList } from './starship/starship-list.interface';
 import { StarshipDetailComponent } from './starship/detail/starship-detail.component';
@@ -11,8 +12,12 @@ const routes: Routes = [
     path: '',
     children: [
       {
+        path: '',
+        component: HomeComponent
+      },
+      {
         path: 'home',
-        component: ErrorPageComponent
+        redirectTo: ''
       },
       {
         path: 'starships',

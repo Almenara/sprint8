@@ -66,9 +66,7 @@
                         }
                     }
                 }
-            }
-            &.active{
-                a{
+                &.active{
                     span{
                         box-shadow: 0 0 8px 3px rgb( 80 80 255 / 90%);
                         @media (min-width: 768px) {
@@ -77,6 +75,7 @@
                     }
                 }
             }
+            
         }
     }
     
