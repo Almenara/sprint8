@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class OpenMenuService {
-  private _menuIsOpen:boolean = false;
+  private _menuIsOpen:Boolean = false;
   
-  get menuIsOpen():boolean{
+  get menuIsOpen():Boolean{
     return this._menuIsOpen
   }
   toggleMenu(){
@@ -17,5 +17,10 @@ export class OpenMenuService {
       document.querySelector('html')!.classList.remove('menu-opened')
     return this.menuIsOpen;
   }
-  
+  closeMenu(){
+    this._menuIsOpen = false;
+    document.querySelector('html')!.classList.remove('menu-opened')
+    return false
+  }
+
 }

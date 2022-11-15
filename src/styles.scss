@@ -9,9 +9,12 @@ html{
             left:260px;
         }
     }
+    app-header{
+        z-index: 1;
+    }
     body{
         background-color: $backgroundColor;
-        min-height: 200vh;
+        min-height: 100vh;
         font-family: 'Roboto', sans-serif;
         color: $defaultColor;
         font-size: 1em;
@@ -45,5 +48,13 @@ html{
         -ms-transition: all .15s ease-out;
         -o-transition: all .15s ease-out;
         transition: all .15s ease-out;
+        &::after,
+        &::before{
+            -moz-transition: all .15s ease-out;
+            -webkit-transition: all .15s ease-out;
+            -ms-transition: all .15s ease-out;
+            -o-transition: all .15s ease-out;
+            transition: all .15s ease-out;
+        }
     }
 }

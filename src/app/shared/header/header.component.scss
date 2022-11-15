@@ -2,6 +2,7 @@
 header{
     position: sticky;
     background-color: $black;
+    z-index: 50;
     #main-nav{            
         z-index: 100;
         #burger{
@@ -123,7 +124,7 @@ header{
         position: absolute;
         height: 0;
         width: 0;
-        background-color: rgba($color: #000000, $alpha: 0.8);
+        background-color: rgba($color: #000000, $alpha: 0.7);
         z-index:10;
     }
     &.menu-opened{

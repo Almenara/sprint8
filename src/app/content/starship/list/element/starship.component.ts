@@ -1,5 +1,6 @@
-import { StarWarsAPIService } from './../../star-wars-api.service';
+import { StarWarsAPIService } from '../../../star-wars-api.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { Starship } from '../../starship-list.interface';
 
 @Component({
   selector: 'app-starship',
@@ -7,11 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./starship.component.scss']
 })
 export class StarshipComponent implements OnInit {
-  @Input() starshipList: any;
-
-  constructor(public starWarsApi : StarWarsAPIService) { }
+  @Input() starship!: Starship;
+  public id:number = 0;
+  constructor() {
+   }
 
   ngOnInit(): void {
+    this.id = Number(this.starship.url.split('/')[5])
   }
-
+  
 }

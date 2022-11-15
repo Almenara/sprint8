@@ -1,0 +1,19 @@
+@import "../../../vars.scss";
+app-error-page{
+}
+.container-fluid{
+    margin-top: -100px;
+    max-width: 800px;
+    color: $yellow;
+    overflow: hidden;
+    #text{
+        -webkit-transform: perspective(400px) rotateX(50deg);  
+        padding: 0 20px 70px;
+        h1{
+            margin-bottom: 50px;
+        }
+        h2{
+            text-align: justify;
+        }
+    }
+}

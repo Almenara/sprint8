@@ -1,12 +1,10 @@
 <div id="menu">
     <ul id="options" class="d-flex flex-column flex-md-row justify-content-center aling-items-center">
-        <li class="option active">
-            <a href="#">Home<span></span></a>
-            
+        <li class="option">
+            <a (click)="closeMenu()" [routerLink]="[ '/' ]" [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="['active']">Home<span></span></a>   
         </li>
         <li class="option">
-            <a href="#">Starships<span></span></a>
-            
+            <a (click)="closeMenu()" [routerLink]="[ '/starships' ]" [routerLinkActive]="['active']">Starships<span></span></a>   
         </li>
     </ul>
 </div>
