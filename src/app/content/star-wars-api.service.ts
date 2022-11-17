@@ -68,7 +68,7 @@ export class StarWarsAPIService{
       })
     }
 
-    return {starship : this.starshipDetail, pilots : this.pilots};
+    return {starship : this.starshipDetail, pilots : this.pilots, films : this.films};
   }
   async getPilot(resource: string, id:number){
     await firstValueFrom(this.http.get<Pilot>(`${this.URLService}/${resource}/${id}`))
@@ -80,7 +80,10 @@ export class StarWarsAPIService{
   }
   async getFilm(resource: string, id:number){
     await firstValueFrom(this.http.get<Film>(`${this.URLService}/${resource}/${id}`))
-    .then( film => this.films.push(film) )
+    .then( film =>{
+      film.image = `https://starwars-visualguide.com/assets/img/films/${film.url.split('/')[5]}.jpg`;
+      this.films.push(film)
+    } )
     .catch( (error:any) => { if (error.status != 200 ) return error.status })
   }
 

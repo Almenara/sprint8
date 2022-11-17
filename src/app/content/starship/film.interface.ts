@@ -22,6 +22,7 @@ export interface Film {
     created:       Date;
     edited:        Date;
     url:           string;
+    image:         string;
 }
 
 // Converts JSON strings to/from your types
