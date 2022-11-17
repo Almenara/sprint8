@@ -31,7 +31,6 @@ export class StarshipDetailComponent implements OnInit {
       this.starship = data.starship;
       this.pilots = data.pilots;
       this.films = data.films;
-      console.log(this.films)
     });
     this.starshipImg = `https://starwars-visualguide.com/assets/img/starships/${this.id}.jpg`
   }

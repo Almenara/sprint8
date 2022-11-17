@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
     if(user.email == this.user.email && user.password == this.user.password){
       let name = `${user.name} ${user.surname}`;
       this.authService.login(1, this.user.email!, name);
-      console.log(this.authService.auth);
       this.router.navigate(['/starships'])
     }
 
