@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('user', JSON.stringify(this.user));
     let name = `${this.user.name} ${this.user.surname}`;
     this.authService.login(1, this.user.email!, name);
-      console.log(this.user);
     this.router.navigate(['/home'])
   }
 
