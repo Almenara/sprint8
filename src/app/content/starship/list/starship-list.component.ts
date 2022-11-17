@@ -9,6 +9,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class StarshipListComponent implements OnInit {
   
+  
   public nextPage:number = 1;
   get starshipList(){
     return this.starWarsApi.starshipList;
@@ -26,6 +27,7 @@ export class StarshipListComponent implements OnInit {
       this.starWarsApi.getStarshipListByPage(this.nextPage);
     }
   }
+  
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     if(this.nextPage){
