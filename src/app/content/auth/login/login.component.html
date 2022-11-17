@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+    <form [formGroup]="registerForm" class="d-flex flex-column gap-4">
+        <h1 *ngIf="userLocalStorage != null" class="text-center">LOGIN</h1>
+        <h1 *ngIf="userLocalStorage == null" class="text-center">REGISTER</h1>
+
+
+        <input type="email" [(ngModel)]="user.email" formControlName="email" name="password" id="email" autocomplete="off" placeholder="Email">
+        <span class="form-text text-danger"
+        *ngIf="this.registerForm.controls['email'].errors && this.registerForm.controls['email'].touched" >
+            Este campo es obligatorio.
+        </span>
+        
+        <input *ngIf="!userLocalStorage"  type="text" [(ngModel)]="user.name" formControlName="name" name="name" id="name" pautocomplete="off" placeholder="Your Name">
+        <span class="form-text text-danger"
+        *ngIf="!userLocalStorage && this.registerForm.controls['email'].errors && this.registerForm.controls['email'].touched" >
+            Este campo es obligatorio.
+        </span>
+
+        <input *ngIf="!userLocalStorage"  type="text" [(ngModel)]="user.surname" formControlName="surname" name="surname" id="surname" autocomplete="off" placeholder="Your Surname">
+        <span class="form-text text-danger"
+        *ngIf="!userLocalStorage && this.registerForm.controls['email'].errors && this.registerForm.controls['email'].touched" >
+            Este campo es obligatorio.
+        </span>
+
+        <input type="password" [(ngModel)]="user.password"  formControlName="password" name="password" id="password" autocomplete="off" placeholder="Password">
+        <span class="form-text text-danger"
+        *ngIf="!userLocalStorage && this.registerForm.controls['email'].errors && this.registerForm.controls['email'].touched" >
+            Este campo es obligatorio.
+        </span>
+
+        <button *ngIf="userLocalStorage" type="submit" (click)="login()">Login</button>
+        <button *ngIf="!userLocalStorage" type="submit" (click)="register()">Register</button>
+
+
+    </form>
+</div>

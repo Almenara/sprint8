@@ -1,4 +1,3 @@
-import { StarWarsAPIService } from '../../../star-wars-api.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Starship } from '../../starship-list.interface';
 

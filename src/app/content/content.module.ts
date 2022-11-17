@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
 import { ContentRoutingModule } from './content-routing.module';
 import { SharedModule } from './../shared/shared.module';
@@ -11,6 +12,7 @@ import { StarshipDetailComponent } from './starship/detail/starship-detail.compo
 import { StarshipComponent } from './starship/list/element/starship.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,15 @@ import { HomeComponent } from './home/home.component';
     StarshipListComponent,
     StarshipComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
+    FormsModule,
     ContentRoutingModule,
     CommonModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports:[
     ContentComponent,
