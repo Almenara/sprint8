@@ -27,7 +27,6 @@ export class AuthGuard implements /*CanActivate,*/ CanLoad {
   }
 
   isLoged(){
-    return true;
     return this.authService.auth.id? true : this.router.parseUrl('/login');
   }
 }
