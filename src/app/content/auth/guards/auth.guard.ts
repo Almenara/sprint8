@@ -23,12 +23,10 @@ export class AuthGuard implements /*CanActivate,*/ CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-      return this.isLoged();
+    return this.isLoged();
   }
 
   isLoged(){
-    return true;
     return this.authService.auth.id? true : this.router.parseUrl('/login');
   }
 }

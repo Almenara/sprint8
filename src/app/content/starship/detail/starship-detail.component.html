@@ -28,3 +28,7 @@
 <div id="little-block-container" class="d-grid gap-3 mt-3" *ngIf="pilots.length > 0">
     <app-little-block class="d-flex flex-column col" *ngFor="let pilot of pilots" [text]="pilot.name" [image]="pilot.image"></app-little-block>
 </div>
+<h1 *ngIf="films.length > 0" class="mt-5">FILMS</h1>
+<div id="little-block-container" class="d-grid gap-3 mt-3" *ngIf="films.length > 0">
+    <app-little-block class="d-flex flex-column col" *ngFor="let film of films" [text]="'Episode ' + film.episode_id + ': ' + film.title" [image]="film.image"></app-little-block>
+</div>
