@@ -1,41 +1,44 @@
 // To parse this data:
 //
-//   import { Convert, Film } from "./file";
+//   import { Convert, Pilot } from "./file";
 //
-//   const film = Convert.toFilm(json);
+//   const pilot = Convert.toPilot(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface Film {
-    title:         string;
-    episode_id:    number;
-    opening_crawl: string;
-    director:      string;
-    producer:      string;
-    release_date:  Date;
-    characters:    string[];
-    planets:       string[];
-    starships:     string[];
-    vehicles:      string[];
-    species:       string[];
-    created:       Date;
-    edited:        Date;
-    url:           string;
-    image:         string;
+export interface Pilot {
+    name:       string;
+    height:     string;
+    mass:       string;
+    hair_color: string;
+    skin_color: string;
+    eye_color:  string;
+    birth_year: string;
+    gender:     string;
+    homeworld:  string;
+    films:      string[];
+    species:    string[];
+    vehicles:   string[];
+    starships:  string[];
+    created:    Date;
+    edited:     Date;
+    url:        string;
+    image:      string;
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toFilm(json: string): Film {
-        return cast(JSON.parse(json), r("Film"));
+    public static toPilot(json: string): Pilot {
+        return cast(JSON.parse(json), r("Pilot"));
     }
 
-    public static filmToJson(value: Film): string {
-        return JSON.stringify(uncast(value, r("Film")), null, 2);
+    public static pilotToJson(value: Pilot): string {
+        return JSON.stringify(uncast(value, r("Pilot")), null, 2);
     }
 }
+
 
 function invalidValue(typ: any, val: any, key: any = ''): never {
     if (key) {
@@ -170,18 +173,20 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "Film": o([
-        { json: "title", js: "title", typ: "" },
-        { json: "episode_id", js: "episode_id", typ: 0 },
-        { json: "opening_crawl", js: "opening_crawl", typ: "" },
-        { json: "director", js: "director", typ: "" },
-        { json: "producer", js: "producer", typ: "" },
-        { json: "release_date", js: "release_date", typ: Date },
-        { json: "characters", js: "characters", typ: a("") },
-        { json: "planets", js: "planets", typ: a("") },
-        { json: "starships", js: "starships", typ: a("") },
-        { json: "vehicles", js: "vehicles", typ: a("") },
+    "Pilot": o([
+        { json: "name", js: "name", typ: "" },
+        { json: "height", js: "height", typ: "" },
+        { json: "mass", js: "mass", typ: "" },
+        { json: "hair_color", js: "hair_color", typ: "" },
+        { json: "skin_color", js: "skin_color", typ: "" },
+        { json: "eye_color", js: "eye_color", typ: "" },
+        { json: "birth_year", js: "birth_year", typ: "" },
+        { json: "gender", js: "gender", typ: "" },
+        { json: "homeworld", js: "homeworld", typ: "" },
+        { json: "films", js: "films", typ: a("") },
         { json: "species", js: "species", typ: a("") },
+        { json: "vehicles", js: "vehicles", typ: a("") },
+        { json: "starships", js: "starships", typ: a("") },
         { json: "created", js: "created", typ: Date },
         { json: "edited", js: "edited", typ: Date },
         { json: "url", js: "url", typ: "" },

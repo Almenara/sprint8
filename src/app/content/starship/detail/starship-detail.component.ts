@@ -1,7 +1,10 @@
-import { Starship } from './../starship-list.interface';
-import { StarWarsAPIService } from './../../star-wars-api.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+
+import { Film } from './../film.interface';
+import { Starship } from './../starship-list.interface';
+import { Pilot } from '../pilot.interface';
+import { StarWarsAPIService } from './../../star-wars-api.service';
 
 @Component({
   selector: 'app-starship-detail',
@@ -12,6 +15,8 @@ export class StarshipDetailComponent implements OnInit {
   public id:number = 0;
   
   public starship!: Starship;
+  public pilots: Pilot[] = [];
+  public films: Film[] = [];
 
   public starshipImg: string = "../../../../assets/img/default.jpg"
   public starshipImgDefault: string = "../../../../assets/img/default.jpg"
@@ -22,7 +27,12 @@ export class StarshipDetailComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = Number(params.get('id'));
     });
-    this.starWarsApi.getStarship(this.id).then(( data : Starship ) => this.starship = data);
+    this.starWarsApi.getStarship(this.id).then(( data: {starship: Starship, pilots: Pilot[], films: Film[]} ) => {
+      this.starship = data.starship;
+      this.pilots = data.pilots;
+      this.films = data.films;
+      console.log(this.films)
+    });
     this.starshipImg = `https://starwars-visualguide.com/assets/img/starships/${this.id}.jpg`
   }
   getStarshipImgDefault(){

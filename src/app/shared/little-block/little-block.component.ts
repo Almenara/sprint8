@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-little-block',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LittleBlockComponent implements OnInit {
   
-  public text  :string = "Starships";
-  public image :string = "../../../assets/img/404.jpg";
-  public link  :string = "/starships";
+  @Input() text   :string = "Title";
+  @Input() image  :string = "../../../assets/img/404.jpg";
+  @Input() link   :string | null = null;
 
   constructor() { }
 
