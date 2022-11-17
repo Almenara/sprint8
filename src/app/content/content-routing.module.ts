@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/guards/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -20,11 +21,15 @@ const routes: Routes = [
       },
       {
         path: 'starships',
-        component: StarshipListComponent
+        component: StarshipListComponent,
+        canActivate: [AuthGuard],
+        canLoad: [AuthGuard]
       },
       {
         path: 'starships/:id',
-        component: StarshipDetailComponent
+        component: StarshipDetailComponent,
+        canActivate: [AuthGuard],
+        canLoad: [AuthGuard]
       },
       {
         path: 'login',
