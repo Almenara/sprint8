@@ -1,1 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/font-awesome/css/font-awesome.css";
+@import "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap";
+@import "vars";
+html{
+    &.menu-opened{
+        overflow: hidden;
+        body{
+            position: relative;
+            left:260px;
+        }
+    }
+    app-header{
+        z-index: 1;
+    }
+    body{
+        background-color: $backgroundColor;
+        min-height: 100vh;
+        font-family: 'Roboto', sans-serif;
+        color: $defaultColor;
+        font-size: 1em;
+        font-weight: 400;
+        position: relative;
+        left:0;
+        a{
+            color: $defaultColor;
+            &:hover{
+                color: $defaultColorHover
+            }
+        }
+        &.menu-opened{
+            position: relative;
+            left: 260px;
+        }
+        
+        @media (min-width: 768px) {
+            background-image: url(assets/img/bg_starsL.jpg), url(assets/img/bg_starsR.jpg);
+            background-position: left top, right top;
+            background-repeat: no-repeat, no-repeat;
+            background-attachment: fixed;
+            left: 0!important;
+        }
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="password"]{
+        background-color: $white;
+        border-radius: 5px;
+        border-color: $gray;
+        padding: 10px 15px;
+        font-weight: 300;
+        font-size: 18px;
+    }
+    button{
+        background-color: $buttonGray;
+        color: $white;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-weight: 300;
+        font-size: 18px;
+    }
+}
+*{
+    &:not(.no-animated):not(.slick-track):not(.slick-slide){
+        -moz-transition: all .15s ease-out;
+        -webkit-transition: all .15s ease-out;
+        -ms-transition: all .15s ease-out;
+        -o-transition: all .15s ease-out;
+        transition: all .15s ease-out;
+        &::after,
+        &::before{
+            -moz-transition: all .15s ease-out;
+            -webkit-transition: all .15s ease-out;
+            -ms-transition: all .15s ease-out;
+            -o-transition: all .15s ease-out;
+            transition: all .15s ease-out;
+        }
+    }
+}

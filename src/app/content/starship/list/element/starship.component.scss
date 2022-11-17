@@ -1,0 +1,49 @@
+@import "../../../../../vars.scss";
+.container-model{
+    overflow: hidden;
+    border-radius: 8px;
+    z-index: 0;
+    a.starship-model{
+        padding: 20px 30px;
+        background-color: $darkGray;
+        width: calc(100% - 6px);
+        background-image: url(../../../../../assets/img/bg_starship_list.png);
+        background-repeat: repeat-x;
+        text-decoration: none;
+        position: relative;
+        p{
+            margin-bottom: 0;
+        }
+        &:hover {
+            color: $lightGray;
+            background-color: $gray;
+            h4{
+                color: $yellow;
+            }
+            &::after,
+            &::before{
+                border-right-color: $gray;
+            }
+        }
+        &::after, 
+        &::before{
+            content: ""; 
+            display: block;
+            position: absolute;
+            height: 33%;
+            width: 0px;
+            top: 0;
+            left: -6px;
+            border-right: 6px solid #282727;
+            border-left: none;
+            border-bottom: 6px solid transparent;
+        }
+        &::before{
+            bottom: 0;
+            top: auto;
+            border-left: none;
+            border-top: 6px solid transparent;
+            border-bottom: none;
+        }
+    }
+}
