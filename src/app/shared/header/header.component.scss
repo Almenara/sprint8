@@ -68,12 +68,33 @@ header{
         padding: 0;
         & > div{
             min-width: 61px;
+            @media (min-width: 768px) {
+                width: 100%
+            }
         }
-        div:first-child {
+        & > div:first-child {
             border-right: 1px solid $gray;
+            @media (min-width: 768px) {
+                border-right: none;
+            }
         }
-        div:last-child {
+        & > div:last-child {
             border-left: 1px solid $gray;
+            box-sizing: border-box;
+            @media (min-width: 768px) {
+                border-left: none;
+                font-weight: 600;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+            }
+            a, span{
+                @media (min-width: 768px) {
+                    font-weight: 600;
+                    padding-right: 30px;
+                    letter-spacing: 3px;
+                    text-decoration: none;
+                } 
+            }
         }
         .logo{
             height: 100%;

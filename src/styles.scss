@@ -1,6 +1,7 @@
-@import"../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/font-awesome/css/font-awesome.css";
 @import "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400&display=swap";
-@import "./vars";
+@import "vars";
 html{
     &.menu-opened{
         overflow: hidden;
@@ -39,6 +40,25 @@ html{
             background-attachment: fixed;
             left: 0!important;
         }
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="password"]{
+        background-color: $white;
+        border-radius: 5px;
+        border-color: $gray;
+        padding: 10px 15px;
+        font-weight: 300;
+        font-size: 18px;
+    }
+    button{
+        background-color: $buttonGray;
+        color: $white;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-weight: 300;
+        font-size: 18px;
     }
 }
 *{
