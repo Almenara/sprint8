@@ -1,8 +1,13 @@
 @import "../../../../vars.scss";
 form{
+    width: 100%;
+    max-width: 400px;
     h1{
         font-weight: 200;
         color: $yellow;
     }
-    max-width: 600px;
+    input,
+    button{
+        width: 100%;
+    }
 }

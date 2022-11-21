@@ -27,13 +27,12 @@ export class LoginComponent implements OnInit {
   })
 
   constructor(
-    private router: Router, 
+    public router: Router, 
     private authService: AuthService,
     private fb: FormBuilder
     ) { 
   }
   
-
   get auth(){
     return this.authService.auth
   }
@@ -44,20 +43,16 @@ export class LoginComponent implements OnInit {
 
   }
 
-  printUser(){
-    console.log(this.user);
-  }
-
   login(){
     let user = JSON.parse(localStorage.getItem('user')!);
     if(user.email == this.user.email && user.password == this.user.password){
       let name = `${user.name} ${user.surname}`;
       this.authService.login(1, this.user.email!, name);
-      console.log(this.authService.auth);
       this.router.navigate(['/starships'])
     }
 
   }
+  
   register(){
     this.user.active = true;
     localStorage.setItem('user', JSON.stringify(this.user));
@@ -65,6 +60,4 @@ export class LoginComponent implements OnInit {
     this.authService.login(1, this.user.email!, name);
     this.router.navigate(['/home'])
   }
-
-
 }

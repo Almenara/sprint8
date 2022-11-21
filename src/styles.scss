@@ -47,21 +47,41 @@ html{
     input[type="password"]{
         background-color: $white;
         border-radius: 5px;
-        border-color: $gray;
+        border: 2px solid white;
         padding: 10px 15px;
         font-weight: 300;
         font-size: 18px;
+        &.ng-invalid.ng-touched , 
+        &.ng-invalid.ng-dirty{ 
+            border: 2px solid red;
+        }
+    }
+    .error{
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="password"]{
+            border: 2px solid red;
+        }
     }
     button{
         background-color: $buttonGray;
         color: $white;
+        border: 2px solid $buttonGray;
         border-radius: 5px;
         padding: 10px 15px;
         font-weight: 300;
         font-size: 18px;
+        &:hover{
+            background-color: $gray;
+        }
     }
 }
 *{
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+
     &:not(.no-animated):not(.slick-track):not(.slick-slide){
         -moz-transition: all .15s ease-out;
         -webkit-transition: all .15s ease-out;

@@ -37,7 +37,7 @@ export class StarWarsAPIService{
         this.starshipList.results = this.starshipList.results.concat(resp.results);
       })
   }
-  getStarshipList():any{
+  getStarshipList():void{
     this.http.get<StarshipList>(`${this.URLService}/${this.resource}/?page=1`)
       .subscribe(resp => {
         this.starshipList = resp;
