@@ -27,13 +27,12 @@ export class LoginComponent implements OnInit {
   })
 
   constructor(
-    private router: Router, 
+    public router: Router, 
     private authService: AuthService,
     private fb: FormBuilder
     ) { 
   }
   
-
   get auth(){
     return this.authService.auth
   }
@@ -42,10 +41,6 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
 
-  }
-
-  printUser(){
-    console.log(this.user);
   }
 
   login(){
@@ -57,6 +52,7 @@ export class LoginComponent implements OnInit {
     }
 
   }
+  
   register(){
     this.user.active = true;
     localStorage.setItem('user', JSON.stringify(this.user));
@@ -64,6 +60,4 @@ export class LoginComponent implements OnInit {
     this.authService.login(1, this.user.email!, name);
     this.router.navigate(['/home'])
   }
-
-
 }

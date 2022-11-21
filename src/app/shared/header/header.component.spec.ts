@@ -20,4 +20,10 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('Abrir menú mobile', () => {
+    let button = fixture.debugElement.nativeElement.querySelector('#burger');
+    button.click();
+    expect(component.menuIsOpen).toBeTruthy();
+  });
 });
