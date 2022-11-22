@@ -1,4 +1,4 @@
-<div class="d-flex flex-column flex-lg-row justify-content-center gap-3">
+<div [@load]="fadeInStart? 'visible' : 'hidden'" class="d-flex flex-column flex-lg-row justify-content-center gap-3">
   <app-little-block class="w-100 d-flex justify-content-center" [link]="'starships'" [text]="'Starships'" [image]="'https://starwars-visualguide.com/assets/img/starships/12.jpg'"></app-little-block>
   <app-little-block *ngIf="!auth.id" class="w-100 d-flex justify-content-center" [link]="'login'" [text]="'Login'"></app-little-block>
 </div>
