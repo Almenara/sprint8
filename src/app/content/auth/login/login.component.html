@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+<div [@load]="fadeInStart? 'visible' : 'hidden'" class="d-flex justify-content-center">
     <form [formGroup]="registerForm" class="d-flex flex-column gap-4">
         <h1 *ngIf="userLocalStorage" class="text-center">LOGIN</h1>
         <h1 *ngIf="!userLocalStorage" class="text-center">REGISTER</h1>
