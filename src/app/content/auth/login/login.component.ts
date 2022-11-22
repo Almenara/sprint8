@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AuthService } from './../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -7,9 +8,33 @@ import { User } from './user.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations:[
+    trigger('load',[
+      state(
+        'void, hidden',
+        style({ 
+        opacity: 0 ,
+      })),
+      state(
+        'visible', 
+        style({ 
+        opacity: 1 ,
+      })),
+      transition(
+        '* => visible', 
+        animate('500ms ease-in')
+      ),
+      transition(
+        '* => void, * => hidden', 
+        animate('500ms ease-in')
+      )
+
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
+  public fadeInStart = false; 
 
   public user: User = {
     name:     null,
@@ -40,7 +65,7 @@ export class LoginComponent implements OnInit {
     return localStorage.getItem("user") ? true : false ;
   }
   ngOnInit(): void {
-
+    this.fadeInStart = true; 
   }
 
   login(){
