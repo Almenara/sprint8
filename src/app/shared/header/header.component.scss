@@ -87,12 +87,16 @@ header{
                 letter-spacing: 3px;
                 text-transform: uppercase;
             }
-            a, span{
+            a{
                 @media (min-width: 768px) {
                     font-weight: 600;
-                    padding-right: 30px;
                     letter-spacing: 3px;
                     text-decoration: none;
+                } 
+            }
+            span{
+                @media (min-width: 768px) {
+                    padding-right: 30px;
                 } 
             }
         }

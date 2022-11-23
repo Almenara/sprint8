@@ -7,7 +7,7 @@ import { AuthService } from './../services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements /*CanActivate,*/ CanLoad {
+export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(
     private authService: AuthService,
@@ -17,16 +17,31 @@ export class AuthGuard implements /*CanActivate,*/ CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.isLoged();
+      let fullpath = route.url.reduce((path, currentSegment) => {
+        return `${path}/${currentSegment.path}`;
+      }, '');
+    
+    return this.isLoged(fullpath);
   }
 
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.isLoged();
+      const fullpath = segments.reduce((path, currentSegment) => {
+        return `${path}/${currentSegment.path}`;
+      }, '');
+    
+      return this.isLoged(fullpath);
   }
 
-  isLoged(){
-    return this.authService.auth.id? true : this.router.parseUrl('/login');
+  isLoged(path: String ){
+    //console.log(this.router)
+    if(this.authService.auth.id){
+      return  true 
+    }
+    if(path != "/login" && path != "/register"){
+      this.authService.redirect = path;
+    }
+    return this.router.parseUrl("/login");
   }
 }

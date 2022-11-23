@@ -1,5 +1,5 @@
 export interface Auth {
-    id      : number | null | undefined;
-    email   : string | null | undefined;
-    user    : string | null | undefined;
+    id      : number;
+    email   : string;
+    user    : string;
 }

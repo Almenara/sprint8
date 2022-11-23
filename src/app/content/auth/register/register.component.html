@@ -1,0 +1,35 @@
+<div [@load]="fadeInStart? 'visible' : 'hidden'" class="d-flex justify-content-center">
+    <form [formGroup]="registerForm" class="d-flex flex-column gap-4">
+        <h1 *ngIf="!userLocalStorage" class="text-center">REGISTER</h1>
+
+        <input type="email"  formControlName="email" name="password" id="email" autocomplete="off" placeholder="Email">
+        <span class="form-text text-danger"
+        *ngIf="this.registerForm.controls['email'].errors && this.registerForm.controls['email'].touched" >
+            Este campo es obligatorio.<br/>
+            Debe ser una cuenta de email valida.
+        </span>
+        
+        <input type="text" formControlName="name" name="name" id="name" pautocomplete="off" placeholder="Your Name">
+        <span class="form-text text-danger"
+        *ngIf="this.registerForm.controls['name'].errors && this.registerForm.controls['name'].touched" >
+            Este campo es obligatorio y debe tener al menos 3 carácteres.
+        </span>
+
+        <input type="text" formControlName="surname" name="surname" id="surname" autocomplete="off" placeholder="Your Surname">
+        <span class="form-text text-danger"
+        *ngIf="this.registerForm.controls['surname'].errors && this.registerForm.controls['surname'].touched" >
+            Este campo es obligatorio y debe tener al menos 3 carácteres.
+        </span>
+
+        <input type="password" formControlName="password" name="password" id="password" autocomplete="off" placeholder="Password">
+        <span class="form-text text-danger"
+        *ngIf="this.registerForm.controls['password'].errors && this.registerForm.controls['password'].touched" >
+            Este campo es obligatorio y debe tener al menos 6 carácteres.
+        </span>
+
+        <button type="submit" [disabled]="!registerForm.valid" (click)="register()">Register</button>
+
+    </form>
+</div>
+{{ registerForm.value | json }}
+{{ registerForm.status }}

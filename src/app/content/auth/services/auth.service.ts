@@ -6,33 +6,33 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  public user:Auth = {
-      id:     null,
-      email:  null,
-      user:   null
-  }
-  private _auth: Auth | undefined | null;
+  public redirect: String = "/home";
+
+  private _auth: Auth | undefined;
 
   get auth() {
     return {...this._auth}
   }
 
-  constructor() { }
+  constructor() { 
+    let auth = localStorage.getItem('auth');
+    if(auth) this._auth = JSON.parse(auth);
+  }
 
   login(id: number, email:string, user:string){
-    this.user.id = id;
-    this.user.email = email;
-    this.user.user = user;
-    this._auth = this.user;
-    return this.user
+    this._auth = {
+      id : id,
+      email : email,
+      user : user,
+    };
+    localStorage.setItem('auth', JSON.stringify(this._auth));
+    return this._auth;
   }
 
   logout(){
-    this._auth = {
-      id:     null,
-      email:  null,
-      user:   null
-    };
-    this.user = this._auth
+    this._auth = undefined;
+    localStorage.removeItem('auth');
+    this.redirect = "/home";
+    return this._auth;
   }
 }

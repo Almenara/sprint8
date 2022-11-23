@@ -13,6 +13,7 @@ import { StarshipComponent } from './starship/list/element/starship.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LoginComponent } from './auth/login/login.component';
     StarshipComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,

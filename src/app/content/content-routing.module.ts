@@ -1,11 +1,13 @@
-import { AuthGuard } from './auth/guards/auth.guard';
-import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { StarshipListComponent } from './starship/list/starship-list.component';
 import { StarshipDetailComponent } from './starship/detail/starship-detail.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { LoginComponent } from './auth/login/login.component';
+
 
 const routes: Routes = [
   {
@@ -34,6 +36,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       },
       {
         path: '**',
