@@ -15,5 +15,6 @@
         </span>
 
         <button type="submit" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+        <a [routerLink]="['/register']" class="mt-5 text-center">Register</a>
     </form>
 </div>
