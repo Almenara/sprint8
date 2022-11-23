@@ -1,14 +1,14 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { AuthService } from './../services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { User } from '../user.interface';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
   animations:[
     trigger('load',[
       state(
@@ -33,11 +33,13 @@ import { User } from '../user.interface';
     ])
   ]
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   public fadeInStart = false; 
 
-  public loginForm: FormGroup = this.fb.group({
+  public registerForm: FormGroup = this.fb.group({
     email:    ['', [Validators.required, Validators.email]],
+    name:     ['', [Validators.required, Validators.minLength(3)]],
+    surname:  ['', [Validators.required, Validators.minLength(3)]],
     password:    ['', [Validators.required, Validators.minLength(6)]],
   })
 
@@ -58,13 +60,19 @@ export class LoginComponent implements OnInit {
     this.fadeInStart = true; 
   }
 
-  login(){
-    let user = JSON.parse(localStorage.getItem('user')!);
-    if(user.email == this.loginForm.value.email && user.password == this.loginForm.value.password){
-      let name = `${user.name} ${user.surname}`;
-      this.authService.login(1, this.loginForm.value.email!, name);
-      this.router.navigate([this.authService.redirect])
+  
+  register(){
+    let user: User = {
+      email : this.registerForm.value.email,
+      name : this.registerForm.value.name,
+      surname : this.registerForm.value.surname,
+      password : this.registerForm.value.password,
+      active : true,
     }
-
+    user.active = true;
+    localStorage.setItem('user', JSON.stringify(user));
+    let name = `${user.name} ${user.surname}`;
+    this.authService.login(1, user.email, name);
+    this.router.navigate([this.authService.redirect]);
   }
 }
